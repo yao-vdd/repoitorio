@@ -1,0 +1,1095 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>YAGO.EXE — Portfólio de Alta Performance & Design Editorial</title>
+  <meta name="description" content="Portfólio de Yago Araujo Andrade (YAGO.EXE), estudante do 2º ano do Técnico em Informática. Arquitetura web, APIs, inteligência artificial e interfaces de alto nível.">
+  <meta name="author" content="Yago Araujo Andrade">
+  <meta name="theme-color" content="#f8f8f6">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='16' fill='%230f0f10'/><text x='50' y='64' font-size='46' font-family='monospace' font-weight='900' fill='%23ff4d00' text-anchor='middle'>Y</text></svg>">
+
+  <!-- Fontes de Alta Performance: Syne, Plus Jakarta Sans, JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Folha de estilos única em CSS puro -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Cortina Editorial de Transição de Páginas e Seções -->
+  <div id="pageTransition" class="page-transition-curtain" aria-hidden="true">
+    <div class="transition-stripes">
+      <div class="t-stripe t-stripe-1"></div>
+      <div class="t-stripe t-stripe-2"></div>
+    </div>
+    <div class="transition-badge">
+      <span class="t-pulse"></span>
+      <span id="transitionLabel">CARREGANDO // YAGO.EXE</span>
+    </div>
+  </div>
+
+  <!-- Cursor Personalizado Interativo (Nível Awwwards) -->
+  <div class="custom-cursor" aria-hidden="true">
+    <div class="cursor-dot"></div>
+    <div class="cursor-ring">
+      <span class="cursor-label"></span>
+    </div>
+  </div>
+
+  <!-- Barra de Progresso de Rolagem Superior -->
+  <div class="scroll-progress-bar" id="scrollProgress"></div>
+
+  <!-- ======================================================================
+       CABEÇALHO FIXO & MINIMALISTA COM TEMA DINÂMICO
+       ====================================================================== -->
+  <header class="site-header" id="siteHeader">
+    <div class="container header-container">
+      
+      <!-- Marca / Logo -->
+      <a href="#hero" class="brand-logo" aria-label="Ir para o topo" data-cursor="hover">
+        <span class="brand-name">YAGO.EXE</span>
+        <span class="brand-status-pill">
+          <span class="pulse-dot"></span>
+          2º ANO TÉCNICO
+        </span>
+      </a>
+
+      <!-- Menu Desktop -->
+      <nav class="desktop-nav" aria-label="Navegação principal">
+        <ul class="nav-list">
+          <li>
+            <a href="#sobre" class="nav-link" data-cursor="hover">
+              <span class="nav-index">01</span>
+              Sobre mim
+            </a>
+          </li>
+          <li>
+            <a href="#projetos" class="nav-link" data-cursor="hover">
+              <span class="nav-index">02</span>
+              Projetos
+            </a>
+          </li>
+          <li>
+            <a href="#terminal" class="nav-link" data-cursor="hover">
+              <span class="nav-index">03</span>
+              Terminal
+            </a>
+          </li>
+          <li>
+            <a href="#contato" class="nav-link" data-cursor="hover">
+              <span class="nav-index">04</span>
+              Contato
+            </a>
+          </li>
+        </ul>
+
+        <!-- Alternador de Som (Web Audio API Synthesizer) -->
+        <button id="soundToggle" class="sound-toggle-btn" aria-label="Alternar efeitos sonoros" title="Alternar som de interface" data-cursor="hover">
+          <span class="sound-wave-bars" aria-hidden="true">
+            <span class="s-bar"></span>
+            <span class="s-bar"></span>
+            <span class="s-bar"></span>
+          </span>
+          <span class="sound-label" id="soundLabel">SFX: OFF</span>
+        </button>
+
+        <!-- Command Palette Trigger (Ctrl+K) -->
+        <button id="commandPaletteBtn" class="cmd-trigger-btn" aria-label="Abrir Command Palette (Ctrl+K)" title="Abrir menu rápido (Ctrl+K)" data-cursor="hover">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <span class="cmd-btn-text">Buscar</span>
+          <kbd class="cmd-shortcut-key">⌘K</kbd>
+        </button>
+
+        <!-- Controles Adicionais: Alternador de Tema Claro/Escuro -->
+        <button id="themeToggle" class="theme-toggle-btn" aria-label="Alternar tema claro/escuro" title="Alternar tema" data-cursor="hover">
+          <span class="theme-icon light-icon">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="5"></circle>
+              <line x1="12" y1="1" x2="12" y2="3"></line>
+              <line x1="12" y1="21" x2="12" y2="23"></line>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+              <line x1="1" y1="12" x2="3" y2="12"></line>
+              <line x1="21" y1="12" x2="23" y2="12"></line>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+          </span>
+          <span class="theme-icon dark-icon">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+          </span>
+        </button>
+
+        <a href="#contato" class="nav-cta-btn" data-cursor="hover">
+          Vamos conversar
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="7" y1="17" x2="17" y2="7"></line>
+            <polyline points="7 7 17 7 17 17"></polyline>
+          </svg>
+        </a>
+      </nav>
+
+      <!-- Botão Hambúrguer Mobile -->
+      <button class="mobile-toggle-btn" id="mobileToggle" aria-label="Abrir menu" aria-expanded="false">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+
+    </div>
+
+    <!-- Gaveta de Menu Mobile -->
+    <div class="mobile-drawer" id="mobileDrawer">
+      <div class="container mobile-drawer-content">
+        <div class="mobile-top-meta">
+          <span class="editorial-tag"><span class="dot"></span> YAGO.EXE // PORTFÓLIO</span>
+          <span class="live-clock-badge" id="mobileClock">00:00:00</span>
+        </div>
+        <ul class="mobile-nav-list">
+          <li>
+            <a href="#sobre" class="mobile-nav-link">
+              <span class="m-num">01</span>
+              <span>Sobre mim</span>
+            </a>
+          </li>
+          <li>
+            <a href="#projetos" class="mobile-nav-link">
+              <span class="m-num">02</span>
+              <span>Projetos</span>
+            </a>
+          </li>
+          <li>
+            <a href="#terminal" class="mobile-nav-link">
+              <span class="m-num">03</span>
+              <span>Terminal Interativo</span>
+            </a>
+          </li>
+          <li>
+            <a href="#contato" class="mobile-nav-link">
+              <span class="m-num">04</span>
+              <span>Contato</span>
+            </a>
+          </li>
+        </ul>
+        <div class="mobile-quick-actions-bar">
+          <button id="mobileCmdBtn" class="mobile-action-pill">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            <span>Command ⌘K</span>
+          </button>
+          <button id="mobileSoundBtn" class="mobile-action-pill">
+            <span>SFX Som</span>
+          </button>
+        </div>
+        <div class="mobile-drawer-footer">
+          <a href="#contato" class="btn-primary" style="width: 100%;">
+            Falar com Yago
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ====================================================================
+         SEÇÃO HERO (TOPO EDITORIAL DE ALTO IMPACTO)
+         ==================================================================== -->
+    <section id="hero" class="hero-section">
+      <div class="container hero-container">
+        
+        <!-- Barra de Metadados Editoriais com Relógio ao Vivo -->
+        <div class="hero-meta-bar">
+          <div class="meta-item">
+            <span class="meta-label">IDENTIDADE</span>
+            <span class="meta-val">Yago Araujo Andrade</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">FORMAÇÃO</span>
+            <span class="meta-val">Técnico em Informática (2º Ano)</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">FUSO // HORÁRIO LOCAL</span>
+            <span class="meta-val mono-clock" id="heroLiveClock">SÃO PAULO [UTC-3] --:--:--</span>
+          </div>
+          <div class="meta-item status-pill-item">
+            <span class="meta-label">DISPONIBILIDADE</span>
+            <span class="meta-val accent-text">
+              <span class="mini-pulse"></span>
+              ESTÁGIOS & PROJETOS
+            </span>
+          </div>
+        </div>
+
+        <!-- Bloco Principal de Headline Monumental -->
+        <div class="hero-headline-block">
+          <div class="hero-editorial-badge">
+            <span class="badge-dot"></span>
+            ARQUITETURA & DESENVOLVIMENTO // ED. 2026
+          </div>
+          <h1 class="hero-title">
+            <span class="title-line" data-scramble="CRIANDO IDEIAS.">CRIANDO IDEIAS.</span>
+            <span class="title-line">
+              <span class="highlight-accent" data-scramble="DESENVOLVENDO O FUTURO.">DESENVOLVENDO O FUTURO.</span>
+            </span>
+          </h1>
+        </div>
+
+        <!-- Conteúdo Dividido e Chamada para Ação -->
+        <div class="hero-content-split">
+          <div class="hero-text-wrap">
+            <p class="hero-tagline">
+              Sou Yago, estudante de Técnico em Informática, explorando o desenvolvimento web, a programação e novas possibilidades com tecnologia.
+            </p>
+            <div class="hero-metric-strip">
+              <div class="metric-box">
+                <span class="metric-num">03</span>
+                <span class="metric-label">Cases Principais</span>
+              </div>
+              <div class="metric-divider"></div>
+              <div class="metric-box">
+                <span class="metric-num">100%</span>
+                <span class="metric-label">Código Autoral & Limpo</span>
+              </div>
+              <div class="metric-divider"></div>
+              <div class="metric-box">
+                <span class="metric-num">2º</span>
+                <span class="metric-label">Ano Técnico Ativo</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-actions">
+            <div class="hero-button-group">
+              <a href="#projetos" class="btn-primary" data-cursor="hover">
+                <span>Explorar projetos</span>
+                <svg class="btn-icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="7" y1="7" x2="17" y2="17"></line>
+                  <polyline points="17 7 17 17 7 17"></polyline>
+                </svg>
+              </a>
+              <a href="#sobre" class="btn-secondary" data-cursor="hover">
+                <span>Conhecer trajetória</span>
+              </a>
+            </div>
+
+            <!-- Badges de Foco e Especificação -->
+            <div class="hero-badges-row">
+              <div class="badge-pill">
+                <span class="pill-dot"></span>
+                <strong>STATUS:</strong> 2º ANO TÉCNICO
+              </div>
+              <div class="badge-pill">
+                <span class="pill-dot"></span>
+                <strong>STACK:</strong> PYTHON, FLASK & JS
+              </div>
+              <button id="heroCmdPill" class="badge-pill interactive-cmd-pill" title="Clique ou pressione Ctrl+K" data-cursor="hover">
+                <span class="pill-dot" style="background-color: var(--cor-destaque);"></span>
+                <strong>ATALHO:</strong> ⌘K BUSCA RÁPIDA
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Showcase 3D Interativo com Three.js (Esfera, Portal & Geometrias Quânticas) -->
+        <div class="hero-3d-wrapper" id="hero3DWrapper">
+          <div class="stage-3d-header">
+            <div class="stage-3d-meta">
+              <span class="stage-dot"></span>
+              <span class="stage-title">THREE.JS ENGINE // NÚCLEO HOLOGRÁFICO INTERATIVO</span>
+              <span class="stage-badge" id="shapeBadge">ESFERA HOLOGRÁFICA</span>
+            </div>
+            <div class="stage-shape-selector">
+              <span class="selector-label">FORMA 3D:</span>
+              <button class="shape-btn is-active" data-shape="sphere" data-cursor="hover">Esfera</button>
+              <button class="shape-btn" data-shape="portal" data-cursor="hover">Portal</button>
+              <button class="shape-btn" data-shape="torus" data-cursor="hover">Torus Knot</button>
+            </div>
+          </div>
+
+          <div class="stage-canvas-container" id="webglContainer" title="Arraste para girar em 360°">
+            <canvas id="webglCanvas"></canvas>
+            <div class="stage-hint">
+              <span class="drag-icon">✦</span>
+              <span>Arraste para rotacionar // Reage ao cursor, clique e rolagem da página</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Ticker Editorial Infinito (Awwwards Style) -->
+      <div class="ticker-editorial" aria-hidden="true">
+        <div class="ticker-track">
+          <div class="ticker-item"><span class="ticker-text">TÉCNICO EM INFORMÁTICA</span><span class="ticker-separator">✦</span></div>
+          <div class="ticker-item"><span class="ticker-text">HTML5 & CSS PURO</span><span class="ticker-separator">✦</span></div>
+          <div class="ticker-item"><span class="ticker-text">JAVASCRIPT MODERNO</span><span class="ticker-separator">✦</span></div>
+          <div class="ticker-item"><span class="ticker-text">PYTHON & FLASK</span><span class="ticker-separator">✦</span></div>
+          <div class="ticker-item"><span class="ticker-text">APIS RESTFUL</span><span class="ticker-separator">✦</span></div>
+          <div class="ticker-item"><span class="ticker-text">SQLITE & BANCOS DE DADOS</span><span class="ticker-separator">✦</span></div>
+          <div class="ticker-item"><span class="ticker-text">DESIGN EDITORIAL AWWWARDS</span><span class="ticker-separator">✦</span></div>
+          <div class="ticker-item"><span class="ticker-text">CLEAN CODE & LÓGICA</span><span class="ticker-separator">✦</span></div>
+
+          <div class="ticker-item"><span class="ticker-text">TÉCNICO EM INFORMÁTICA</span><span class="ticker-separator">✦</span></div>
+          <div class="ticker-item"><span class="ticker-text">HTML5 & CSS PURO</span><span class="ticker-separator">✦</span></div>
+          <div class="ticker-item"><span class="ticker-text">JAVASCRIPT MODERNO</span><span class="ticker-separator">✦</span></div>
+          <div class="ticker-item"><span class="ticker-text">PYTHON & FLASK</span><span class="ticker-separator">✦</span></div>
+          <div class="ticker-item"><span class="ticker-text">APIS RESTFUL</span><span class="ticker-separator">✦</span></div>
+          <div class="ticker-item"><span class="ticker-text">SQLITE & BANCOS DE DADOS</span><span class="ticker-separator">✦</span></div>
+          <div class="ticker-item"><span class="ticker-text">DESIGN EDITORIAL AWWWARDS</span><span class="ticker-separator">✦</span></div>
+          <div class="ticker-item"><span class="ticker-text">CLEAN CODE & LÓGICA</span><span class="ticker-separator">✦</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         SEÇÃO 01: SOBRE MIM (TRAJETÓRIA REAL & AUTÊNTICA)
+         ==================================================================== -->
+    <section id="sobre" class="about-section">
+      <div class="container">
+        
+        <div class="section-header">
+          <div class="section-eyebrow">
+            <span>01 / TRAJETÓRIA REAL & METODOLOGIA</span>
+          </div>
+          <h2 class="section-title">SOBRE MIM</h2>
+          <p class="about-subtitle">DEDICAÇÃO AO APRENDIZADO PRÁTICO E CURIOSIDADE PELA TECNOLOGIA</p>
+        </div>
+
+        <div class="about-narrative-grid">
+          
+          <!-- Coluna Narrativa do Estudante -->
+          <div class="narrative-text-col">
+            <p class="narrative-paragraph">
+              Sou estudante do 2º ano do Ensino Médio integrado ao Técnico em Informática. Meu contato diário com algoritmos, lógica de programação e ferramentas de desenvolvimento despertou em mim uma verdadeira paixão por entender como a tecnologia funciona por dentro e como ela pode resolver problemas concretos.
+            </p>
+            <p class="narrative-paragraph">
+              Ao longo do curso, tenho me aprofundado tanto nos fundamentos da computação quanto em práticas modernas: desde a estruturação de bancos de dados relacionais e APIs em Python até a criação de interfaces web responsivas e acessíveis. Não procuro atalhos; valorizo o código limpo, a clareza e a arquitetura bem pensada.
+            </p>
+            <p class="narrative-paragraph">
+              Estou em constante evolução, buscando sempre novos desafios acadêmicos, projetos práticos para exercitar a teoria da sala de aula e oportunidades de estágio onde possa aprender com equipes experientes e contribuir com dedicação.
+            </p>
+
+            <!-- Card de Destaque Acadêmico -->
+            <div class="academic-status-card">
+              <div class="academic-badge">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--cor-destaque)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+                  <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+                </svg>
+                <span>FORMAÇÃO ATUAL</span>
+              </div>
+              <h3 class="academic-title">Técnico em Informática (2º Ano)</h3>
+              <p class="academic-desc">
+                Rotina intensa de práticas em laboratório, desenvolvimento de algoritmos estruturados, modelagem relacional SQL e criação de protótipos web funcionais.
+              </p>
+              
+              <div class="academic-meta-list">
+                <div class="academic-meta-row">
+                  <span class="academic-key">Ano Letivo:</span>
+                  <span class="academic-val">2º Ano do Ensino Médio Integrado</span>
+                </div>
+                <div class="academic-meta-row">
+                  <span class="academic-key">Interesse Central:</span>
+                  <span class="academic-val">Desenvolvimento Full-Stack & Inteligência Artificial</span>
+                </div>
+                <div class="academic-meta-row">
+                  <span class="academic-key">Princípio Guia:</span>
+                  <span class="academic-val">Código autoral, legível, sem atalhos e sempre responsivo</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Coluna dos Pilares Práticos -->
+          <div class="pillars-col">
+            <div class="pillars-header">
+              <span class="pillars-label">COMPETÊNCIAS & PRÁTICA DIÁRIA</span>
+              <span class="pillars-counter">[3 PILARES]</span>
+            </div>
+
+            <div class="pillars-list">
+              <!-- Pilar 1 -->
+              <div class="pillar-card" data-cursor="hover">
+                <div class="pillar-top">
+                  <span class="pillar-code">01</span>
+                  <div class="pillar-icon-box">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <polyline points="16 18 22 12 16 6"></polyline>
+                      <polyline points="8 6 2 12 8 18"></polyline>
+                    </svg>
+                  </div>
+                </div>
+                <h3 class="pillar-title">Desenvolvimento Web & UI</h3>
+                <p class="pillar-description">
+                  Construção de interfaces modernas, limpas e de alta velocidade com HTML5 semântico, CSS3 com variáveis de design tokens e JavaScript moderno.
+                </p>
+                <div class="pillar-skills">
+                  <span class="skill-tag">HTML5 Semântico</span>
+                  <span class="skill-tag">CSS3 Moderno</span>
+                  <span class="skill-tag">JavaScript ES6+</span>
+                  <span class="skill-tag">Design Editorial</span>
+                </div>
+              </div>
+
+              <!-- Pilar 2 -->
+              <div class="pillar-card" data-cursor="hover">
+                <div class="pillar-top">
+                  <span class="pillar-code">02</span>
+                  <div class="pillar-icon-box">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect>
+                      <rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect>
+                      <line x1="6" y1="6" x2="6.01" y2="6"></line>
+                      <line x1="6" y1="18" x2="6.01" y2="18"></line>
+                    </svg>
+                  </div>
+                </div>
+                <h3 class="pillar-title">Backend & Estruturas de Dados</h3>
+                <p class="pillar-description">
+                  Modelagem relacional de bancos de dados, criação de serviços RESTful estruturados em Python com Flask, validação de rotas e manipulação de JSON.
+                </p>
+                <div class="pillar-skills">
+                  <span class="skill-tag">Python</span>
+                  <span class="skill-tag">Flask</span>
+                  <span class="skill-tag">SQLite</span>
+                  <span class="skill-tag">SQLAlchemy</span>
+                  <span class="skill-tag">APIs REST</span>
+                </div>
+              </div>
+
+              <!-- Pilar 3 -->
+              <div class="pillar-card" data-cursor="hover">
+                <div class="pillar-top">
+                  <span class="pillar-code">03</span>
+                  <div class="pillar-icon-box">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <circle cx="12" cy="12" r="10"></circle>
+                      <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path>
+                      <path d="M2 12h20"></path>
+                    </svg>
+                  </div>
+                </div>
+                <h3 class="pillar-title">Metodologia & Lógica</h3>
+                <p class="pillar-description">
+                  Fundamentos de lógica algorítmica, controle de versão com Git & GitHub, leitura analítica de documentação técnica e resolução estruturada de problemas.
+                </p>
+                <div class="pillar-skills">
+                  <span class="skill-tag">Git & GitHub</span>
+                  <span class="skill-tag">Lógica de Algoritmos</span>
+                  <span class="skill-tag">Clean Code</span>
+                  <span class="skill-tag">Documentação</span>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         SEÇÃO 02: GALERIA DE PROJETOS (ESTILO AWWWARDS MARKET)
+         ==================================================================== -->
+    <section id="projetos" class="projects-section">
+      <div class="container">
+        
+        <div class="section-header projects-header">
+          <div>
+            <div class="section-eyebrow">
+              <span>02 / CATÁLOGO DE TRABALHOS</span>
+            </div>
+            <h2 class="section-title">PROJETOS EM DESTAQUE</h2>
+            <p class="section-desc">
+              Uma seleção refinada de desenvolvimentos práticos inspirada na curadoria do Awwwards Market, unindo visão de produto, engenharia de APIs e interfaces autorais.
+            </p>
+          </div>
+
+          <!-- Barra de Filtros por Categoria -->
+          <div class="category-filter-bar">
+            <button class="filter-btn is-active" data-filter="all" data-cursor="hover">
+              <span>Todos os Trabalhos</span>
+              <span class="filter-count">[03]</span>
+            </button>
+            <button class="filter-btn" data-filter="ai" data-cursor="hover">
+              <span>IA & OCR</span>
+              <span class="filter-count">[01]</span>
+            </button>
+            <button class="filter-btn" data-filter="backend" data-cursor="hover">
+              <span>Backend & APIs</span>
+              <span class="filter-count">[01]</span>
+            </button>
+            <button class="filter-btn" data-filter="ui" data-cursor="hover">
+              <span>Frontend & Web</span>
+              <span class="filter-count">[01]</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Grelha Editorial Assimétrica de Projetos -->
+        <div class="projects-grid" id="projectsGrid">
+          
+          <!-- PROJETO 01: ReaderIA (Featured Grande) -->
+          <article class="project-card is-featured" data-category="ai" data-id="readeria" data-cursor="view">
+            <div class="project-media-box">
+              <img src="projects/readeria.jpg" alt="Mockup conceitual do ReaderIA" class="project-image" loading="lazy">
+              <div class="media-top-overlay">
+                <span class="project-index-pill">CASE #01</span>
+                <span class="project-category-tag">IA & OCR / CONCEITO</span>
+              </div>
+              <div class="media-hover-veil">
+                <span class="quick-view-badge">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                  Ver Detalhes do Projeto
+                </span>
+              </div>
+            </div>
+
+            <div class="project-info-box">
+              <div class="project-info-top">
+                <div class="project-naming">
+                  <h3 class="project-card-title">ReaderIA</h3>
+                  <p class="project-card-tagline">Interpretação inteligente de erros de computador e stack traces em tempo real.</p>
+                </div>
+                <button class="project-action-circle" aria-label="Abrir detalhes do ReaderIA">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                </button>
+              </div>
+
+              <p class="project-summary-text">
+                Conceito inovador de aplicativo que combina reconhecimento óptico de caracteres (OCR) e inteligência artificial generativa para traduzir logs crípticos de terminal e erros de compilação em explicações didáticas e soluções práticas para desenvolvedores.
+              </p>
+
+              <div class="project-card-footer">
+                <div class="card-tech-tags">
+                  <span class="mini-tech-pill">IA Generativa</span>
+                  <span class="mini-tech-pill">OCR</span>
+                  <span class="mini-tech-pill">Python</span>
+                  <span class="mini-tech-pill">UI Editorial</span>
+                </div>
+                <span class="details-trigger-text">
+                  Explorar case <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                </span>
+              </div>
+            </div>
+          </article>
+
+          <!-- PROJETO 02: API de Cachorros -->
+          <article class="project-card" data-category="backend" data-id="api-cachorros" data-cursor="view">
+            <div class="project-media-box">
+              <img src="projects/api_cachorros.jpg" alt="Mockup da API de Cachorros" class="project-image" loading="lazy">
+              <div class="media-top-overlay">
+                <span class="project-index-pill">CASE #02</span>
+                <span class="project-category-tag">BACKEND / REST</span>
+              </div>
+              <div class="media-hover-veil">
+                <span class="quick-view-badge">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                  Ver Detalhes do Projeto
+                </span>
+              </div>
+            </div>
+
+            <div class="project-info-box">
+              <div class="project-info-top">
+                <div class="project-naming">
+                  <h3 class="project-card-title">API de Cachorros</h3>
+                  <p class="project-card-tagline">API RESTful para catalogação e consulta estruturada de raças caninas.</p>
+                </div>
+                <button class="project-action-circle" aria-label="Abrir detalhes da API de Cachorros">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                </button>
+              </div>
+
+              <p class="project-summary-text">
+                Projeto acadêmico construído com Python, Flask, SQLite e o ORM SQLAlchemy. Estruturado com arquitetura desacoplada, paginação, filtros de busca por porte e temperamento, e validação de payloads.
+              </p>
+
+              <div class="project-card-footer">
+                <div class="card-tech-tags">
+                  <span class="mini-tech-pill">Python</span>
+                  <span class="mini-tech-pill">Flask</span>
+                  <span class="mini-tech-pill">SQLite</span>
+                  <span class="mini-tech-pill">SQLAlchemy</span>
+                </div>
+                <span class="details-trigger-text">
+                  Explorar case <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                </span>
+              </div>
+            </div>
+          </article>
+
+          <!-- PROJETO 03: Game Store -->
+          <article class="project-card" data-category="ui" data-id="game-store" data-cursor="view">
+            <div class="project-media-box">
+              <img src="projects/game_store.jpg" alt="Mockup da Game Store" class="project-image" loading="lazy">
+              <div class="media-top-overlay">
+                <span class="project-index-pill">CASE #03</span>
+                <span class="project-category-tag">UI / E-COMMERCE</span>
+              </div>
+              <div class="media-hover-veil">
+                <span class="quick-view-badge">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                  Ver Detalhes do Projeto
+                </span>
+              </div>
+            </div>
+
+            <div class="project-info-box">
+              <div class="project-info-top">
+                <div class="project-naming">
+                  <h3 class="project-card-title">Game Store</h3>
+                  <p class="project-card-tagline">Interface moderna de e-commerce gamer com foco em usabilidade e estética contemporânea.</p>
+                </div>
+                <button class="project-action-circle" aria-label="Abrir detalhes da Game Store">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                </button>
+              </div>
+
+              <p class="project-summary-text">
+                Estudo de interface para catálogo de games e periféricos. Afasta-se da poluição visual dos sites comuns ao empregar alto contraste editorial, filtragem dinâmica e navegação leve.
+              </p>
+
+              <div class="project-card-footer">
+                <div class="card-tech-tags">
+                  <span class="mini-tech-pill">CSS Moderno</span>
+                  <span class="mini-tech-pill">UX / UI</span>
+                  <span class="mini-tech-pill">Responsividade</span>
+                  <span class="mini-tech-pill">JavaScript</span>
+                </div>
+                <span class="details-trigger-text">
+                  Explorar case <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                </span>
+              </div>
+            </div>
+          </article>
+
+        </div>
+
+        <!-- Aviso de Curadoria Editorial -->
+        <div class="catalog-bottom-notice">
+          <div class="notice-left">
+            <span class="notice-indicator"></span>
+            <span class="notice-text">
+              Projetos autorais desenvolvidos no curso técnico e estudos contínuos. Clique em qualquer cartão para ver o diagnóstico completo da arquitetura e repositórios.
+            </span>
+          </div>
+          <a href="#contato" class="btn-secondary" style="padding: 0.65rem 1.25rem; font-size: 0.85rem;" data-cursor="hover">
+            Propor Colaboração
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         SEÇÃO 03: TERMINAL INTERATIVO (RECURSO ZIKA DE NÍVEL AWWWARDS)
+         ==================================================================== -->
+    <section id="terminal" class="terminal-section">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-eyebrow">
+            <span>03 / CONSOLE DE DESENVOLVEDOR</span>
+          </div>
+          <h2 class="section-title">TERMINAL YAGO.EXE</h2>
+          <p class="section-desc">
+            Interaja com o console interativo. Digite comandos ou clique nos botões rápidos abaixo para explorar o ambiente de desenvolvimento.
+          </p>
+        </div>
+
+        <div class="terminal-window" data-cursor="hover">
+          <div class="terminal-header">
+            <div class="terminal-dots">
+              <span class="dot-btn red"></span>
+              <span class="dot-btn yellow"></span>
+              <span class="dot-btn green"></span>
+            </div>
+            <div class="terminal-title">bash — yago@andrade-dev:~ (2º ano técnico)</div>
+            <div class="terminal-chip">STATUS: ONLINE</div>
+          </div>
+
+          <div class="terminal-body" id="terminalBody">
+            <div class="terminal-line system-line">
+              [SISTEMA]: YAGO.EXE CLI v2.0 inicializado com sucesso. Digite <span class="term-hl">help</span> para comandos disponíveis.
+            </div>
+            <div class="terminal-line output-line">
+              Bem-vindo ao console de Yago Araujo Andrade. Estudante dedicado de Técnico em Informática.
+            </div>
+            <!-- Linhas dinâmicas são inseridas aqui via script.js -->
+          </div>
+
+          <div class="terminal-input-bar">
+            <span class="term-prompt">yago@andrade:~$</span>
+            <input type="text" id="terminalInput" class="term-input" placeholder="Digite um comando (ex: skills, bio, projetos, clear)..." autocomplete="off" spellcheck="false">
+            <button id="terminalSubmit" class="term-run-btn" aria-label="Executar comando">EXECUTAR</button>
+          </div>
+
+          <div class="terminal-quick-actions">
+            <span class="quick-label">COMANDOS RÁPIDOS:</span>
+            <button class="quick-cmd-btn" data-cmd="skills">skills</button>
+            <button class="quick-cmd-btn" data-cmd="projetos">projetos</button>
+            <button class="quick-cmd-btn" data-cmd="dogapi">dogapi</button>
+            <button class="quick-cmd-btn" data-cmd="neofetch">neofetch</button>
+            <button class="quick-cmd-btn" data-cmd="matrix">matrix</button>
+            <button class="quick-cmd-btn" data-cmd="contato">contato</button>
+            <button class="quick-cmd-btn" data-cmd="clear">clear</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         SEÇÃO 04: CONTATO ("VAMOS CRIAR ALGO INCRÍVEL?")
+         ==================================================================== -->
+    <section id="contato" class="contact-section">
+      <div class="container">
+        
+        <div class="section-header contact-header">
+          <div class="section-eyebrow">
+            <span>04 / CANAIS DIRETOS & OPORTUNIDADES</span>
+          </div>
+          <h2 class="section-title contact-huge-title">VAMOS CRIAR ALGO INCRÍVEL?</h2>
+          <p class="section-desc">
+            Estou sempre aberto a dialogar sobre novas ideias de tecnologia, oportunidades de estágio, desafios acadêmicos e projetos web. Escolha o canal de sua preferência:
+          </p>
+        </div>
+
+        <div class="contact-main-grid">
+          
+          <!-- Coluna Canais Diretos -->
+          <div class="contact-channels-col">
+            
+            <!-- Cartão E-mail com Cópia com 1 Clique -->
+            <div class="channel-card email-featured-card">
+              <div class="channel-top">
+                <div class="channel-icon-pill">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                  <span>CORREIO ELETRÔNICO</span>
+                </div>
+                <button id="copyEmailBtn" class="copy-action-btn" aria-label="Copiar endereço de e-mail" data-cursor="hover">
+                  <span class="copy-idle">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                    <span>Copiar</span>
+                  </span>
+                  <span class="copy-success" style="display: none;">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    <span style="color: #10b981;">Copiado!</span>
+                  </span>
+                </button>
+              </div>
+
+              <div class="channel-body">
+                <a href="mailto:yago.araujo.dev@exemplo.com" id="displayEmail" class="email-link-display" data-cursor="hover">
+                  yago.araujo.dev@exemplo.com
+                </a>
+                <p class="channel-hint">
+                  <span class="placeholder-tag">✦ Fácil de configurar: altere seu e-mail real no script.js</span>
+                </p>
+              </div>
+            </div>
+
+            <!-- Redes Sociais / Profissionais -->
+            <div class="social-links-grid">
+              
+              <a href="https://github.com/" target="_blank" rel="noopener noreferrer" class="social-card" data-cursor="hover">
+                <div class="social-card-inner">
+                  <div class="social-icon-wrapper">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                  </div>
+                  <div class="social-info">
+                    <span class="social-platform">GITHUB</span>
+                    <span class="social-handle">Repositórios & Commits</span>
+                  </div>
+                </div>
+                <svg width="18" height="18" class="social-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+              </a>
+
+              <a href="https://linkedin.com/" target="_blank" rel="noopener noreferrer" class="social-card" data-cursor="hover">
+                <div class="social-card-inner">
+                  <div class="social-icon-wrapper">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                  </div>
+                  <div class="social-info">
+                    <span class="social-platform">LINKEDIN</span>
+                    <span class="social-handle">Perfil Profissional</span>
+                  </div>
+                </div>
+                <svg width="18" height="18" class="social-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+              </a>
+
+            </div>
+
+            <!-- Dica de Configuração Transparente -->
+            <div class="config-instruction-card">
+              <span class="config-title">Configuração Centralizada de Links:</span>
+              <p class="config-desc">
+                Não criamos links falsos. Seus links de redes sociais e repositórios estão concentrados e fáceis de editar no topo do arquivo <code>script.js</code>.
+              </p>
+            </div>
+
+          </div>
+
+          <!-- Coluna Formulário de Mensagem Direta -->
+          <div class="contact-form-col">
+            <div class="form-wrapper-card">
+              <div class="form-header">
+                <div class="form-icon-pill">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+                  <span>MENSAGEM DIRETA</span>
+                </div>
+                <h3 class="form-title">Envie uma mensagem</h3>
+              </div>
+
+              <form id="contactForm" class="contact-form">
+                <div class="form-group">
+                  <label for="name" class="form-label">Seu Nome</label>
+                  <input type="text" id="name" class="form-input" required placeholder="Ex: Lucas Mendes">
+                </div>
+
+                <div class="form-group">
+                  <label for="email" class="form-label">Seu E-mail</label>
+                  <input type="email" id="email" class="form-input" required placeholder="Ex: lucas@exemplo.com">
+                </div>
+
+                <div class="form-group">
+                  <label for="message" class="form-label">Mensagem ou Proposta</label>
+                  <textarea id="message" rows="4" class="form-textarea" required placeholder="Olá Yago, gostaria de conversar sobre..."></textarea>
+                </div>
+
+                <button type="submit" class="btn-accent" style="width: 100%;" data-cursor="hover">
+                  <span>Enviar Mensagem</span>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                </button>
+              </form>
+
+              <div id="formSuccessMessage" class="form-success-box" style="display: none;">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <h4>Mensagem enviada com sucesso!</h4>
+                <p>Obrigado pelo contato! Para receber mensagens diretamente no seu e-mail de verdade, você pode conectar com serviços como Formspree ou EmailJS.</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- ======================================================================
+       RODAPÉ EDITORIAL
+       ====================================================================== -->
+  <footer class="site-footer">
+    <div class="container footer-container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <span class="footer-logo">YAGO.EXE</span>
+          <p class="footer-tag">Estudante do 2º ano de Informática // Construindo interfaces e APIs com dedicação.</p>
+        </div>
+
+        <div class="footer-links-group">
+          <a href="#hero" class="f-link">Topo</a>
+          <a href="#sobre" class="f-link">Sobre mim</a>
+          <a href="#projetos" class="f-link">Projetos</a>
+          <a href="#terminal" class="f-link">Terminal</a>
+          <a href="#contato" class="f-link">Contato</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="footer-copy">
+          © <span id="currentYear">2026</span> Yago Araujo Andrade. Desenvolvido com HTML, CSS e JavaScript puro.
+        </div>
+        <div class="footer-hud-stats">
+          <span class="hud-item"><span class="hud-dot"></span> FPS: <strong id="fpsMeter">60</strong></span>
+          <span class="hud-item">PING: <strong>14ms</strong></span>
+          <span class="hud-item">AUDIO: <strong id="hudSoundStatus">OFF</strong></span>
+          <span class="hud-item">ESTADO: <strong>ESTÁGIO PRONTO</strong></span>
+        </div>
+        <div class="footer-meta-pill">
+          <span class="mini-pulse"></span>
+          AWWWARDS MARKET INSPIRATION // ZERO FRAMEWORKS
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ======================================================================
+       MODAL DE DETALHES DE PROJETO (INTERATIVO)
+       ====================================================================== -->
+  <div id="projectModal" class="project-modal-backdrop" aria-hidden="true" role="dialog">
+    <div class="project-modal-container">
+      <div class="modal-top-bar">
+        <div class="modal-meta-left">
+          <span class="editorial-tag"><span class="dot"></span> CATÁLOGO DE PROJETOS</span>
+          <span id="modalProjectCategory" class="modal-category">CATEGORIA</span>
+        </div>
+        <button id="modalCloseBtn" class="modal-close-btn" aria-label="Fechar janela" data-cursor="hover">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+      </div>
+
+      <div class="modal-scroll-content">
+        <div class="modal-image-wrapper">
+          <img id="modalProjectImage" src="" alt="Imagem do Projeto" class="modal-banner-image">
+          <div class="modal-image-overlay">
+            <span id="modalImageBadge" class="modal-image-badge">PROJETO</span>
+          </div>
+        </div>
+
+        <div class="modal-body">
+          <div class="modal-title-row">
+            <h2 id="modalProjectTitle" class="modal-title">Título</h2>
+            <p id="modalProjectTagline" class="modal-tagline">Subtítulo</p>
+          </div>
+
+          <div class="modal-stack-section">
+            <span class="modal-section-label">TECNOLOGIAS UTILIZADAS</span>
+            <div id="modalProjectStack" class="modal-stack-tags"></div>
+          </div>
+
+          <div class="modal-grid-2">
+            <div class="modal-info-card">
+              <div class="card-header-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--cor-destaque)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                <h4>O Desafio / Problema</h4>
+              </div>
+              <p id="modalProjectProblem">Descrição do problema...</p>
+            </div>
+
+            <div class="modal-info-card">
+              <div class="card-header-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--cor-destaque)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 16v-4"></path><path d="M12 8h.01"></path></svg>
+                <h4>Solução Desenvolvida</h4>
+              </div>
+              <p id="modalProjectSolution">Descrição da solução...</p>
+            </div>
+          </div>
+
+          <div class="modal-info-card architecture-card">
+            <div class="card-header-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--cor-destaque)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+              <h4>Destaques de Arquitetura & Implementação</h4>
+            </div>
+            <ul id="modalProjectArchitecture" class="architecture-list"></ul>
+          </div>
+
+          <!-- Sandbox Interativo exclusivo para o Case da API Canina -->
+          <div id="modalApiSandbox" class="modal-api-sandbox" style="display: none;">
+            <div class="sandbox-header">
+              <div class="sandbox-title-wrap">
+                <span class="sandbox-indicator"></span>
+                <span class="sandbox-title">SANDBOX INTERATIVO // TESTADOR DE ENDPOINTS DA API</span>
+              </div>
+              <span class="sandbox-badge">MOCK ENGINE v1.2</span>
+            </div>
+            <div class="sandbox-controls">
+              <span class="sandbox-label">TESTAR ROTA:</span>
+              <button class="sandbox-route-btn is-active" data-route="breeds">GET /api/v1/breeds</button>
+              <button class="sandbox-route-btn" data-route="caramelo">GET /api/v1/breeds/caramelo</button>
+              <button class="sandbox-route-btn" data-route="stats">GET /api/v1/metrics</button>
+            </div>
+            <div class="sandbox-console">
+              <div class="sandbox-meta-row">
+                <span class="sandbox-status-tag">STATUS: 200 OK</span>
+                <span class="sandbox-latency-tag" id="sandboxLatency">LATÊNCIA: 12ms</span>
+                <span class="sandbox-content-type">application/json</span>
+              </div>
+              <pre class="sandbox-code-preview" id="sandboxResponse"><code>{
+  "status": 200,
+  "mensagem": "Consulta estruturada realizada com sucesso",
+  "data": [
+    { "id": 1, "raca": "Vira-lata Caramelo", "porte": "Médio", "energia": "Alta" },
+    { "id": 2, "raca": "Pastor Alemão", "porte": "Grande", "energia": "Alta" },
+    { "id": 3, "raca": "Golden Retriever", "porte": "Grande", "energia": "Média" }
+  ],
+  "total": 3,
+  "fonte": "SQLite + SQLAlchemy (Yago Araujo)"
+}</code></pre>
+            </div>
+          </div>
+
+          <div class="modal-academic-note">
+            <strong>Contexto Acadêmico:</strong> <span id="modalProjectContext">Estudo prático no 2º ano técnico.</span>
+          </div>
+
+          <div class="modal-actions-footer">
+            <div class="links-group">
+              <div class="link-placeholder-box">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                <span>Repositório GitHub: <em>(Adicione seu link em script.js)</em></span>
+              </div>
+            </div>
+
+            <button id="modalInnerCloseBtn" class="btn-secondary" data-cursor="hover">
+              Voltar à galeria
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Botão Flutuante de Voltar ao Topo com Barra Circular -->
+  <button id="backToTop" class="back-to-top-btn" aria-label="Voltar ao topo da página" data-cursor="hover">
+    <svg class="progress-ring" width="46" height="46">
+      <circle class="progress-ring-circle-bg" stroke="var(--cor-borda)" stroke-width="2.5" fill="transparent" r="20" cx="23" cy="23" />
+      <circle id="progressRingCircle" class="progress-ring-circle" stroke="var(--cor-destaque)" stroke-width="2.5" fill="transparent" r="20" cx="23" cy="23" />
+    </svg>
+    <svg class="arrow-up-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <line x1="12" y1="19" x2="12" y2="5"></line>
+      <polyline points="5 12 12 5 19 12"></polyline>
+    </svg>
+  </button>
+
+  <!-- Canvas de Efeitos para Celebrações & Konami Code -->
+  <canvas id="fxCanvas" class="fx-canvas" aria-hidden="true"></canvas>
+
+  <!-- ======================================================================
+       COMMAND PALETTE (HUD DE COMANDOS RÁPIDOS - CTRL+K / ⌘K)
+       ====================================================================== -->
+  <div id="commandPalette" class="cmd-palette-backdrop" aria-hidden="true" role="dialog">
+    <div class="cmd-palette-modal">
+      <div class="cmd-palette-search-bar">
+        <svg class="cmd-search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <input type="text" id="cmdPaletteInput" class="cmd-palette-input" placeholder="Digite uma ação ou busque (ex: sobre, projetos, som, terminal, tema)..." autocomplete="off" spellcheck="false">
+        <span class="cmd-badge-esc">ESC</span>
+      </div>
+
+      <div class="cmd-palette-results" id="cmdPaletteResults">
+        <!-- Renderizado dinamicamente pelo script.js -->
+      </div>
+
+      <div class="cmd-palette-footer">
+        <div class="cmd-footer-keys">
+          <span><kbd class="kbd-pill">↑</kbd> <kbd class="kbd-pill">↓</kbd> Navegar</span>
+          <span><kbd class="kbd-pill">↵</kbd> Executar</span>
+          <span><kbd class="kbd-pill">ESC</kbd> Fechar</span>
+        </div>
+        <div class="cmd-footer-brand">YAGO.EXE // HUD v2.5</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Three.js Local (Garante funcionamento 100% offline de alto desempenho) -->
+  <script src="three.min.js"></script>
+
+  <!-- Script único em JavaScript puro -->
+  <script src="script.js"></script>
+</body>
+</html>
